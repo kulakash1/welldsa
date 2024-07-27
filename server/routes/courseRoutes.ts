@@ -1,11 +1,13 @@
+// routes/courseRoutes.ts
 import { Router } from 'express';
-import { getCourses, addCourse } from '../controllers/courseController';
+import { getAllCourses, createCourse } from '../controllers/courseController';
 
-const router = Router();
+const router: Router = Router();
 
-router.get('/', getCourses);
-router.post('/', addCourse);
+// Route to get all courses
+router.get('/courses', getAllCourses);
 
-// Other routes
+// Route to create a new course
+router.post('/courses', createCourse);
 
 export default router;

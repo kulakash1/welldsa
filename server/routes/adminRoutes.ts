@@ -1,10 +1,9 @@
-import { Router } from 'express';
-import { adminLogin } from '../controllers/adminController';
+import express from 'express';
+import { getAllUsers, getAllCourses } from '../controllers/adminController';
 
-const router = Router();
+const router = express.Router();
 
-router.post('/login', adminLogin);
-
-// Other routes
+router.get('/users', getAllUsers);
+router.get('/courses', getAllCourses);
 
 export default router;

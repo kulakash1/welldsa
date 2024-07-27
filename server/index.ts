@@ -1,25 +1,25 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import connectDB from './config/dbConfig';
 import userRoutes from './routes/userRoutes';
 import courseRoutes from './routes/courseRoutes';
 import adminRoutes from './routes/adminRoutes';
+import { authenticateToken } from './utils/middleware';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-app.use(cors());
+// Connect to the database
+connectDB();
+
+// Middleware
 app.use(express.json());
+app.use(authenticateToken); // Apply authentication middleware
 
-app.use('/api/users', userRoutes);
-app.use('/api/courses', courseRoutes);
-app.use('/api/admin', adminRoutes);
+// Routes
+app.use('/api', userRoutes);
+app.use('/api', courseRoutes);
+app.use('/api', adminRoutes);
 
-mongoose.connect('mongodb://localhost:27017/wellprog', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
