@@ -1,10 +1,10 @@
-// models/courseModel.ts
+// models/ProgressModel.ts
 import mongoose, { Document, Schema } from 'mongoose';
 
-// Define the interface for the course document
-export interface ICourse extends Document {
+export interface IProgress extends Document {
   userId: string;
   courseId: string;
+  status: 'not started' | 'in progress' | 'completed';
   id: string;
   name: string;
   title: string;
@@ -16,11 +16,13 @@ export interface ICourse extends Document {
   // Add other fields here
 }
 
+
 // Define the schema
-const CourseSchema: Schema = new Schema({
-  id: { type: String, required: false },
+const ProgressSchema: Schema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  courseId: { type: Schema.Types.ObjectId, ref: 'Course', required: false },
+  courseId: { type: Schema.Types.ObjectId, ref: 'Course', required: true },
+  status: { type: String, required: true },
+  id: { type: String, required: false },
   name: { type: String, required: true },
   title: { type: String, required: false },
   description: { type: String, required: true },
@@ -30,6 +32,6 @@ const CourseSchema: Schema = new Schema({
 });
 
 // Create the model
-const CourseModel = mongoose.model<ICourse>('Course', CourseSchema);
+const ProgressModel = mongoose.model<IProgress>('Progress', ProgressSchema);
 
-export default CourseModel;
+export default ProgressModel;

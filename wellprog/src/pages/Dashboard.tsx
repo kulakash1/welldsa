@@ -23,8 +23,8 @@ const Dashboard: React.FC = () => {
         {courses.map((course: Course) => (
           <ProgressTracker
             key={course._id}
-            course={course.title}
-            progress={course.progress}
+            // course={course.title}
+            // progress={course.progress}
           />
         ))}
       </div>

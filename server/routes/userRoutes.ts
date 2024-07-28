@@ -4,7 +4,7 @@ import { getAllUsers, createUser, verifyPassword, resetPassword, updatePassword,
 const router = Router();
 
 router.get('/', getAllUsers);
-router.post('/create', createUser);
+router.post('/signup', createUser);
 router.post('/verify-password', verifyPassword);
 router.post('/reset-password', resetPassword);
 router.post('/update-password', updatePassword);

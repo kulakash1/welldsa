@@ -6,7 +6,8 @@ import connectDB from './config/dbConfig';
 
 // import db from './config/dbConfig';
 import userRoutes from './routes/userRoutes';
-// import courseRoutes from './routes/courseRoutes';
+import courseRoutes from './routes/courseRoutes';
+import progressRoutes from './routes/progressRoutes';
 // import adminRoutes from './routes/adminRoutes';
 // import { authenticateToken } from './utils/middleware';
 
@@ -26,7 +27,8 @@ app.use(express.json());
 
 // Routes
 app.use('/userapi', userRoutes);
-// app.use('/courseapi', courseRoutes);
+app.use('/courseapi', courseRoutes);
+app.use('/progresseapi', progressRoutes);
 // app.use('/adminapi', adminRoutes);
 
 // start the Express server

@@ -8,7 +8,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     createUser: builder.mutation({
       query: (newUser) => ({
-        url: 'userapi/create',
+        url: 'userapi/signup',
         method: 'POST',
         body: newUser,
       }),

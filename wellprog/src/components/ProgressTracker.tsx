@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useGetCoursesQuery } from '../services/courseApi';
+import { useGetProgressQuery, useUpdateProgressMutation } from '../services/progressApi';
 
-interface ProgressTrackerProps {
-  course: string;
-  progress: number;
-}
+const ProgressTracker: React.FC = () => {
+  const { courseId } = useParams<{ courseId: string }>();
+  // const { data: course, isLoading: isCourseLoading } = useGetCoursesQuery(courseId);
+  // const { data: progress, isLoading: isProgressLoading } = useGetProgressQuery(courseId);
+  const [updateProgress] = useUpdateProgressMutation();
 
-const ProgressTracker: React.FC<ProgressTrackerProps> = ({ course, progress }) => {
+  const handleUpdateProgress = (status: string) => {
+    // updateProgress({ courseId, status });
+  };
+
+  // if (isCourseLoading || isProgressLoading) return <div>Loading...</div>;
+
   return (
-    <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold">{course}</h3>
-      <div className="relative pt-1">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full text-teal-600 bg-teal-200">
-            {progress}%
-          </span>
-        </div>
-        <div className="flex flex-col">
-          <div className="relative pt-1">
-            <div className="flex items-center justify-between">
-              <div className="flex-1 bg-teal-200 rounded h-2">
-                <div className="bg-teal-500 h-2 rounded" style={{ width: `${progress}%` }}></div>
-              </div>
-            </div>
-          </div>
+    <div className="p-4">
+      {/* <h1 className="text-2xl font-bold">{course.title}</h1> */}
+      {/* <p>{course.description}</p> */}
+      <div className="mt-4">
+        <h2 className="text-xl font-semibold">Progress</h2>
+        {/* <p>Status: {progress.status}</p> */}
+        <div className="mt-2">
+          <button
+            onClick={() => handleUpdateProgress('in progress')}
+            className="bg-yellow-500 text-white p-2 rounded mr-2"
+          >
+            In Progress
+          </button>
+          <button
+            onClick={() => handleUpdateProgress('completed')}
+            className="bg-green-500 text-white p-2 rounded"
+          >
+            Complete
+          </button>
         </div>
       </div>
     </div>

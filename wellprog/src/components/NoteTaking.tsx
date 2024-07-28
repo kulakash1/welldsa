@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const NoteTaking: React.FC = () => {
   const [note, setNote] = useState('');
 
-  const handleSave = () => {
+  const handleSaveNote = () => {
     // Save note functionality
     console.log('Note saved:', note);
   };
@@ -16,7 +16,7 @@ const NoteTaking: React.FC = () => {
         placeholder="Write your notes here..."
         className="w-full p-2 border rounded"
       />
-      <button onClick={handleSave} className="bg-blue-500 text-white p-2 rounded mt-2">Save Note</button>
+      <button onClick={handleSaveNote} className="bg-blue-500 text-white p-2 rounded mt-2">Save Note</button>
     </div>
   );
 };
