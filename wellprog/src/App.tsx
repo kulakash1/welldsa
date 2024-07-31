@@ -15,18 +15,21 @@ import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { progressApi } from "./services/progressApi";
 import { courseApi } from "./services/courseApi";
 import ProgressTracker from "./components/ProgressTracker";
+import NavTest from "./NavTest";
+import MainComponent from "./pages/MainComponent";
 
 const App: React.FC = () => {
   return (
     // <ApiProvider api={courseApi}>
       // <ApiProvider api={progressApi}>
         <Router>
+          <NavTest />
           <Navbar />
           <main className="container mx-auto p-4">
             <Routes>
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<><Home /><Login /></>} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/admin" element={<AdminPanel />} />
@@ -39,6 +42,7 @@ const App: React.FC = () => {
                 element={<UpdateUserDetails />}
               />
             <Route path="/courses/:courseId" element={<ProgressTracker />} />
+            <Route path="/courseadmin" element={<MainComponent />} />
               {/* <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />

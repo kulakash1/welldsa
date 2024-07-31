@@ -10,6 +10,8 @@ const Home: React.FC = () => {
         <CourseCard id='1' title="Full Stack Web Development" description="Learn how to build modern web applications." />
         <CourseCard id='2' title="Data Analytics" description="Understand data and make informed decisions." />
         <CourseCard id='3' title="Machine Learning" description="Explore the world of machine learning." />
+        <CourseCard id='4' title="DSA" description="Explore the world of DSA." />
+        <CourseCard id='5' title="CP" description="Explore the world of CP." />
       </div>
     </div>
   );
