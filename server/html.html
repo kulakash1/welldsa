@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+
+<body>
+
+    <button id="course">Course</button>
+    <button id="video">Video</button>
+    <button id="document">Document</button>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script>
+    document.getElementById('course').addEventListener('click', () => {
+
+        console.log("hi");
+
+        axios.post('http://localhost:5050/main/course', {
+
+            name: "react.js",
+            domain: "tech",
+            track: "webdev"
+
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    })
+
+    document.getElementById('video').addEventListener('click', () => {
+
+        console.log("hi");
+
+        axios.post('http://localhost:5050/main/video', {
+
+            title: "first video",
+            link: "link.com",
+            details: {
+                discription: "dislalflakjfljaf"
+            }
+
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    })
+    document.getElementById('document').addEventListener('click', () => {
+
+        console.log("hi");
+
+        axios.post('http://localhost:5050/main/document', {
+
+            title: "first doc",
+            link: "doc.com",
+            details: {
+                discription: "doc dis"
+            }
+
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    })
+
+    console.log("hi");
+</script>
+
+</html>
